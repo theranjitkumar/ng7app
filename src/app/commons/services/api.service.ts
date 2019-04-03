@@ -14,7 +14,7 @@ export class ApiService {
   }
 
   getAll() {
-    return this.http.get(`/posts`);
+    return this.http.get(`${AppConfig.url}/posts`);
   }
 
   getById(id) {
@@ -25,11 +25,11 @@ export class ApiService {
     return this.http.delete(`${AppConfig.url}/posts/${id}`);
   }
 
-  add(pdata) {
-    return this.http.get(`${AppConfig.url}/posts`, pdata);
+  add(params) {
+    return this.http.post(`${AppConfig.url}/posts`, params);
   }
-  update(id, udata) {
-    return this.http.put(`${AppConfig.url}/posts/${id}`, udata);
+  update(id, params) {
+    return this.http.put(`${AppConfig.url}/posts/${id}`, params);
   }
 
 }

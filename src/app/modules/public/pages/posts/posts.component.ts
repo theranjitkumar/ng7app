@@ -9,12 +9,15 @@ import { ApiService } from '../../../../commons/services/api.service';
 })
 export class PostsComponent implements OnInit {
 
+  posts: any[];
+
   constructor(private apiService: ApiService) {
     this.getPost();
   }
 
   getPost() {
-    this.apiService.getAll().subscribe(res => {
+    this.apiService.getAll().subscribe((res: any) => {
+      this.posts = res;
       console.log(res);
 
     });
