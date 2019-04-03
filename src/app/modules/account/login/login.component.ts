@@ -9,18 +9,17 @@ import { UserService } from '../../../commons/services/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  authToken: string;
+  user: any = {};
 
   constructor(private userService: UserService) { }
 
   login() {
-    const user = {
-      email: 'test@email.com',
-      password: 'password'
-    };
 
-    this.userService.login(user).subscribe((res: any) => {
-      this.authToken = res;
+    // const user = {
+    //   email: 'test@email.com',
+    //   password: 'password'
+    // };
+    this.userService.login(this.user).subscribe((res: any) => {
       sessionStorage.setItem('token', res.token);
       console.log(res);
     });

@@ -1,3 +1,12 @@
-<p>
-  dashboard works!
-</p>
+<h3> Users List </h3>
+
+<div>
+  <ul>
+    <li *ngFor="let u of users">
+      <h4> <strong>{{u.name}}</strong></h4>
+      <p> {{u.email}} </p>
+      <p> {{u.mobileNo}} </p>
+      <!-- <p> {{p.password}} </p> -->
+    </li>
+  </ul>
+</div>
