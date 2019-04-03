@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './store/reducers';
 
+import { AccountModule } from './modules/account/account.module';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -13,6 +15,7 @@ import { reducers, metaReducers } from './store/reducers';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AccountModule,
     StoreModule.forRoot(reducers, { metaReducers })
   ],
   providers: [],
