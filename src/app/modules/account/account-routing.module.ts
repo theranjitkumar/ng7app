@@ -9,7 +9,7 @@ import { PasswordresetComponent } from './passwordreset/passwordreset.component'
 import { AuthGuard } from '../../commons/guard/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'account', pathMatch: 'full' },
+  { path: 'account', redirectTo: 'account/login', pathMatch: 'full' },
   {
     path: 'account', component: AccountComponent,
     children: [
