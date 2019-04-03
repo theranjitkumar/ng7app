@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { PrivateRoutingModule } from './private-routing.module';
+
 import { PrivateComponent } from './private.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [PrivateComponent],
+  declarations: [PrivateComponent, DashboardComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    PrivateRoutingModule
   ]
 })
 export class PrivateModule { }

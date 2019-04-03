@@ -1,9 +1,35 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+import { AppConfig } from '../config/appConfig';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor() { }
+  constructor(private http: HttpClient) {
+    console.log(AppConfig.url);
+  }
+
+  getAll() {
+    return this.http.get(`/posts`);
+  }
+
+  getById(id) {
+    return this.http.get(`${AppConfig.url}/posts/${id}`);
+  }
+
+  delete(id) {
+    return this.http.delete(`${AppConfig.url}/posts/${id}`);
+  }
+
+  add(pdata) {
+    return this.http.get(`${AppConfig.url}/posts`, pdata);
+  }
+  update(id, udata) {
+    return this.http.put(`${AppConfig.url}/posts/${id}`, udata);
+  }
+
 }
