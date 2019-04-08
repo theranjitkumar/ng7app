@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,8 @@ import { reducers, metaReducers } from './store/reducers';
 import { AccountModule } from './modules/account/account.module';
 import { PrivateModule } from './modules/private/private.module';
 import { PublicModule } from './modules/public/public.module';
+
+import { AuthInterCepterService } from './commons/services/authIntercepter.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { PublicModule } from './modules/public/public.module';
     PublicModule,
     StoreModule.forRoot(reducers, { metaReducers })
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterCepterService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     //   password: 'password'
     // };
     this.userService.login(this.user).subscribe((res: any) => {
-      sessionStorage.setItem('token', res.token);
+      localStorage.setItem('token', res.token);
       console.log(res);
     });
   }
