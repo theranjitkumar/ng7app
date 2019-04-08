@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'https://express-restapi.herokuapp.com2'
+  baseUrl: 'https://express-restapi.herokuapp.com'
 };

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import {LocalStorage} from '../../../commons/services/localStorage.service'
 import { UserService } from '../../../commons/services/user.service';
+
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   user: any = {};
 
-  constructor(private userService: UserService) { }
+  constructor(LocalStorage: LocalStorage ,private userService: UserService) { }
 
   login() {
 
@@ -20,7 +22,7 @@ export class LoginComponent implements OnInit {
     //   password: 'password'
     // };
     this.userService.login(this.user).subscribe((res: any) => {
-      localStorage.setItem('token', res.token);
+      LocalStorage.set('token', res.token);
       console.log(res);
     });
   }

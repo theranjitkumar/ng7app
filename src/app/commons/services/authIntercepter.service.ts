@@ -4,15 +4,17 @@ import { HttpInterceptor, HttpRequest, HttpResponse, HttpErrorResponse, HttpHand
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
+import {LocalStorage} from './localStorage.service'
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthInterCepterService implements HttpInterceptor {
 
-  token: string = localStorage.getItem('token');
+  token: string;
 
   constructor(private router: Router) {
-
+    this.token = LocalStorage.get('token');
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

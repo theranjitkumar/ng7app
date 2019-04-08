@@ -18,7 +18,7 @@ import { AuthInterCepterService } from './commons/services/authIntercepter.servi
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     AppRoutingModule,
     AccountModule,
