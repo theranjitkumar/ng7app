@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { HttpInterceptor, HttpRequest, HttpResponse, HttpErrorResponse, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
@@ -13,8 +12,10 @@ export class AuthInterCepterService implements HttpInterceptor {
 
   token: string;
 
-  constructor(private router: Router) {
+  constructor() {
     this.token = LocalStorage.get('token');
+    console.log(this.token);
+    
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -34,7 +35,6 @@ export class AuthInterCepterService implements HttpInterceptor {
         if (event instanceof HttpResponse) {
           if(event.status === 200)
           console.log('Res Event:', event);
-          this.router.navigateByUrl('/private/dashboard');
         }
         return event;
       }));

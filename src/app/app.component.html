@@ -4,4 +4,7 @@
 <a routerLink="/private">private</a>
 <a routerLink="/account">account</a>
 
+<a href="javascript:void(0)" *ngIf="isLogedIn" (click)="logout()">LogOut</a>
+<a routerLink="/account/login" *ngIf="!isLogedIn"> LogIn</a>
+
 <router-outlet></router-outlet>

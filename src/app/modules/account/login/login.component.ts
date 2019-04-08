@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import {LocalStorage} from '../../../commons/services/localStorage.service'
 import { UserService } from '../../../commons/services/user.service';
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   user: any = {};
 
-  constructor(LocalStorage: LocalStorage ,private userService: UserService) { }
+  constructor(private router: Router ,private userService: UserService) { }
 
   login() {
 
@@ -22,8 +23,9 @@ export class LoginComponent implements OnInit {
     //   password: 'password'
     // };
     this.userService.login(this.user).subscribe((res: any) => {
-      LocalStorage.set('token', res.token);
       console.log(res);
+      LocalStorage.set('token', res.token);
+      this.router.navigateByUrl('/private/dashboard');
     });
   }
 
